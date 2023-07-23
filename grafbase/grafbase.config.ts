@@ -8,14 +8,14 @@ const post = g.model('Post', {
   comments: g.relation(() => comment).optional().list().optional(),
   likes: g.int().default(0),
   tags: g.string().optional().list().length({ max: 5 }),
-  author: g.relation(() => user).optional()
+  author: g.relation(() => User).optional()
 }).search()
 
 const comment = g.model('Comment', {
   post: g.relation(post),
   body: g.string(),
   likes: g.int().default(0),
-  author: g.relation(() => user).optional()
+  author: g.relation(() => User).optional()
 })
 
 const User = g.model('User', {
