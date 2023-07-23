@@ -18,13 +18,6 @@ const comment = g.model('Comment', {
   author: g.relation(() => user).optional()
 })
 
-const user = g.model('User', {
-  name: g.string(),
-  email: g.email().optional(),
-  posts: g.relation(post).optional().list(),
-  comments: g.relation(comment).optional().list()
-})
-
 const User = g.model('User', {
   name: g.string().length({ min: 2, max: 20 }),
   email: g.string().unique(),
